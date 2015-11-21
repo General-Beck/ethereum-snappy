@@ -1,3 +1,3 @@
 # ethereum-snappy
-Ethereum snap apps
+Ethereum snap apps. 
 Current state pre-alfa
