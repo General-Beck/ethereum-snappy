@@ -1,0 +1,21 @@
+name: gethd
+version: 0.0.1
+vendor: General-Beck <general.beck@gmail.com>
+architectures: [amd64, armhf, i386]
+icon: meta/ethereum_logo_snap.png
+source: https://github.com/ethereum/go-ethereum
+
+services:
+ - name: gethd
+   description: Go ethereum node with rpc
+   start: gethd
+   stop: "killall -s INT geth"
+   stop-timeout: 45
+   ports:
+    external:
+       rpc:
+           port: 8545/tcp
+           negotiable: false
+       p2p:
+           port: 30303/tcp
+           negotiable: false
