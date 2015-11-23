@@ -14,12 +14,10 @@ case $platform in
         echo "unknown platform for snappy-magic: $platform. remember to file a bug or better yet: fix it :)"
         ;;
 esac
-echo "$SNAP_APP_DATA_PATH" | grep -q SNAP_APP && SNAP_APP_DATA_PATH=$HOME
-if test -z "$SNAP_APP_DATA_PATH"; then
-  SNAP_APP_DATA_PATH=$HOME
-fi
-mkdir -p $HOME/.ethereum
-exec $SNAP_APP_PATH/bin/$plat_abi/geth --rpc --rpcaddr "0.0.0.0"
+ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
+export ETHEREUM_HOME
+mkdir -p $ETHEREUM_HOME/.ethereum
+exec ${SNAP_APP_PATH}/bin/$plat_abi/geth --rpc --rpcport "8545" --rpcaddr "0.0.0.0" --datadir "$ETHEREUM_HOME/.ethereum" --ipcdisable
 
 # never reach this
 exit 1
