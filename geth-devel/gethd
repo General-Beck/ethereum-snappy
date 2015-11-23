@@ -4,9 +4,6 @@ set -e
 platform=$(uname -i)
 
 case $platform in
-    i386)
-        plat_abi=i386-linux-gnu
-        ;;
     x86_64)
         plat_abi=x86_64-linux-gnu
         ;;
@@ -17,7 +14,11 @@ case $platform in
         echo "unknown platform for snappy-magic: $platform. remember to file a bug or better yet: fix it :)"
         ;;
 esac
-
+echo "$SNAP_APP_DATA_PATH" | grep -q SNAP_APP && SNAP_APP_DATA_PATH=$HOME
+if test -z "$SNAP_APP_DATA_PATH"; then
+  SNAP_APP_DATA_PATH=$HOME
+fi
+mkdir -p $HOME/.ethereum
 exec $SNAP_APP_PATH/bin/$plat_abi/geth --rpc --rpcaddr "0.0.0.0"
 
 # never reach this
