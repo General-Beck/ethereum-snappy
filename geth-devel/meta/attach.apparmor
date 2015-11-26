@@ -97,8 +97,6 @@
   # binaries in this app
   /geth-attach							   ux,
   /gethd							   ux,
-
-  capability net_admin,
   capability dac_override,
   capability network,
   capability network-client,

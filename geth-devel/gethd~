@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+platform=$(uname -i)
+
+case $platform in
+    x86_64)
+        plat_abi=x86_64-linux-gnu
+        ;;
+    armv7l)
+        plat_abi=arm-linux-gnueabihf
+        ;;
+    *)
+        echo "unknown platform for snappy-magic: $platform. remember to file a bug or better yet: fix it :)"
+        ;;
+esac
+ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
+export ETHEREUM_HOME
+mkdir -p $ETHEREUM_HOME/.ethereum
+exec ${SNAP_APP_PATH}/bin/$plat_abi/geth --rpc --rpcport "8545" --rpcaddr "0.0.0.0" --datadir "$ETHEREUM_HOME/.ethereum"
+
+# never reach this
+exit 1

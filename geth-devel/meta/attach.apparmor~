@@ -100,4 +100,7 @@
 
   capability net_admin,
   capability dac_override,
-}.
+  capability network,
+  capability network-client,
+  capability network-service,
+}

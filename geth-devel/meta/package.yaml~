@@ -1,5 +1,5 @@
 name: gethd
-version: 0.0.27
+version: 0.1.0
 vendor: Denis S. Soldatov aka General-Beck <general.beck@gmail.com>
 architectures: [amd64, armhf]
 icon: meta/ethereum_logo_snap.png
@@ -19,26 +19,29 @@ services:
       port: 30303/tcp
       negotiable: no
    caps:
-    - network-admin
-    - network-admin
+#    - network-admin
+    - networking
     - network-client
-    - network-firewall
+#    - network-firewall
     - network-service
-    - network-status
-    - snapd
-   security-policy: 
-    seccomp: meta/attach.seccomp
+#    - network-status
+#    - snapd
+#  securiry-template: unconfined
+#   security-policy: 
+#     apparmor: meta/attach.apparmor
+#    seccomp: meta/attach.seccomp
 binaries:
   - name: attach
     exec: geth-attach
     description: "attach console to geth"
-    caps:
-     - network-admin
-     - network-client
-     - network-firewall
-     - network-service
-     - network-status
-     - snapd
-    security-policy: 
-    seccomp: meta/attach.seccomp
+    caps: 
+    - networking
+    - network-client
+#    - network-firewall
+    - network-service
+#     - network-admin
+#     - network-client
+#    securiry-template: unconfined
+#    security-policy: 
+#    seccomp: meta/attach.seccomp
    
