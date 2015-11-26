@@ -1,0 +1,5 @@
+socket
+setsockopt
+close
+munmap
+execve
