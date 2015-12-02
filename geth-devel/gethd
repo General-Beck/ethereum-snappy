@@ -10,6 +10,9 @@ case $platform in
     armv7l)
         plat_abi=arm-linux-gnueabihf
         ;;
+    i386)
+        plat_abi=i386-linux-gnu
+        ;;
     *)
         echo "unknown platform for snappy-magic: $platform. remember to file a bug or better yet: fix it :)"
         ;;
@@ -17,7 +20,7 @@ esac
 ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
 export ETHEREUM_HOME
 mkdir -p $ETHEREUM_HOME/.ethereum
-exec ${SNAP_APP_PATH}/bin/$plat_abi/geth --rpc --rpcport "8545" --rpcaddr "0.0.0.0" --datadir "$ETHEREUM_HOME/.ethereum" --ipcdisable
+exec ${SNAP_APP_PATH}/bin/$plat_abi/geth --rpc --rpcport "8545" --rpcaddr "0.0.0.0" --datadir "$ETHEREUM_HOME/.ethereum" --ipcpath "$ETHEREUM_HOME/.ethereum/geth.ipc" --identity "Ubuntu Core $plat_abi" --fast
 
 # never reach this
 exit 1
