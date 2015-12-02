@@ -34,18 +34,16 @@ $verbose && echo snapp_bin: $snapp_bin
 $verbose && echo snapp_dir: $snapp_dir
 $verbose && echo snapp_org_bin: $snapp_org_bin
 $verbose && echo plat_abi: $plat_abi
-
+ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
 PATH="$snapp_dir/bin/$plat_abi/:$PATH"
 #LD_LIBRARY_PATH="$snapp_dir/lib/$plat_abi/:$LD_LIBRARY_PATH"
-export PATH #LD_LIBRARY_PATH
+export PATH ETHEREUM_HOME#LD_LIBRARY_PATH
 
 # make cwd the snapp dir
 cd $snapp_dir
 
 # fire the binary
-exec $snapp_bin "$@"
-#ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
-#export ETHEREUM_HOME
+exec $snapp_bin --attach ipc://$ETHEREUM_HOME/.ethereum/geth.ipc
 #exec ${SNAP_APP_PATH}/bin/$plat_abi/geth attach rpc://localhost
 
 # never reach this

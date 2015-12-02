@@ -1,5 +1,5 @@
 name: gethd
-version: 0.1.5
+version: 0.1.6
 vendor: Denis S. Soldatov aka General-Beck <general.beck@gmail.com>
 architectures: [amd64, armhf, i386]
 icon: meta/ethereum_logo_snap.png

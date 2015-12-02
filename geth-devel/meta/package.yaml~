@@ -1,5 +1,5 @@
 name: gethd
-version: 0.1.4
+version: 0.1.5
 vendor: Denis S. Soldatov aka General-Beck <general.beck@gmail.com>
 architectures: [amd64, armhf, i386]
 icon: meta/ethereum_logo_snap.png
@@ -32,7 +32,7 @@ services:
 #    seccomp: meta/attach.seccomp
 binaries:
   - name: attach
-    exec: "./bin/geth-attach --attach"
+    exec: ./bin/geth-attach
     description: "attach console to geth"
     caps: 
     - networking

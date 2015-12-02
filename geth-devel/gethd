@@ -20,6 +20,7 @@ esac
 ETHEREUM_HOME=${SNAP_APP_DATA_PATH}
 export ETHEREUM_HOME
 mkdir -p $ETHEREUM_HOME/.ethereum
+cp -u ${SNAP_APP_PATH}/bin/static-nodes.json $ETHEREUM_HOME/.ethereum/static-nodes.json
 exec ${SNAP_APP_PATH}/bin/$plat_abi/geth --rpc --rpcport "8545" --rpcaddr "0.0.0.0" --datadir "$ETHEREUM_HOME/.ethereum" --ipcpath "$ETHEREUM_HOME/.ethereum/geth.ipc" --identity "Ubuntu Core $plat_abi" --fast
 
 # never reach this
