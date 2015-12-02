@@ -1,0 +1,28 @@
+name: gethd
+version: 0.0.10
+vendor: Denis S. Soldatov aka General-Beck <general.beck@gmail.com>
+architectures: [amd64, armhf]
+icon: meta/ethereum_logo_snap.png
+source: https://github.com/General-Beck/ethereum-snappy
+services:
+ - name: gethd
+   description: Go ethereum node with rpc
+   start: gethd
+   stop: "killall -s INT geth"
+   stop-timeout: 45
+   ports:
+    external:
+     rpc:
+      port: 8545/tcp
+      negotiable: no
+     p2p:
+      port: 30303/tcp
+      negotiable: no
+   caps:
+    - networking
+    - network-service
+    - network-client
+binaries:
+  - name: attach
+    exec: geth-attach
+    caps: []
