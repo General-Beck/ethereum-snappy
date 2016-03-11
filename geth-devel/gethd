@@ -12,7 +12,10 @@ case $platform in
         ;;
     i386)
         plat_abi=i386-linux-gnu
-        ;;
+	;;
+    arch64)
+	plat_abi=arch64-linux-gnu    
+    	;;
     *)
         echo "unknown platform for snappy-magic: $platform. remember to file a bug or better yet: fix it :)"
         ;;
